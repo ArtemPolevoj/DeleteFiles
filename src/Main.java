@@ -13,20 +13,10 @@ public class Main {
             if (dir.isFile()) {
                 openFile(new File(dir.getPath()));
             } else {
-                File[] filesName = new File(dir.getPath()).listFiles();
-                for (File file : filesName) {
-                    if (file.isFile()) {
-                        openFile(file);
-                    } else {
-                        openDirectory(file.getPath());
-                    }
-                }
+                openDirectory(dir.getPath());
             }
         }
     }
-
-
-
 
     static void openFile(File file) {
 
@@ -57,15 +47,14 @@ public class Main {
 
     static void openDirectory(String path) {
 
-        File files = new File(path);
+        File[] filesName = new File(path).listFiles();
 
-        File[] filesName = files.listFiles();
-
+        assert filesName != null;
         for (File file : filesName) {
             if (file.isFile()) {
                 openFile(file);
             } else {
-                openDirectory(file.getPath());
+                 openDirectory(file.getPath());
             }
         }
     }

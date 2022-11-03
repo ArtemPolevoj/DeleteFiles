@@ -11,16 +11,19 @@ public class Main {
 
         for (File dir : openDir) {
             if (dir.isFile()) {
-                openFile(new File(dir.getPath()));
+                openFile(dir.getPath());
             } else {
                 openDirectory(dir.getPath());
             }
         }
     }
 
-    static void openFile(File file) {
+    static void openFile(String path) {
 
-        System.out.println("Τΰιλ - " + file.getPath());
+        if(path.contains("pdf")){
+            System.out.println("Τΰιλ - " + path);
+        }
+
 
 
     /*    //  Calendar calendar = new Calendar() ;
@@ -52,7 +55,7 @@ public class Main {
         assert filesName != null;
         for (File file : filesName) {
             if (file.isFile()) {
-                openFile(file);
+                openFile(file.getPath());
             } else {
                  openDirectory(file.getPath());
             }
